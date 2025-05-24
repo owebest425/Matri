@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - User Profile App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="browse.html">Browse Users</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>User Profile</h1>
+        <div class="profile-details">
+            <div><strong>Name:</strong> <span id="profileName">John Doe</span></div>
+            <div><strong>Email:</strong> <span id="profileEmail">john.doe@example.com</span></div>
+            <div><strong>Age:</strong> <span id="profileAge">30</span></div>
+            <div><strong>Gender:</strong> <span id="profileGender">Male</span></div>
+            <div><strong>Bio:</strong> <span id="profileBio">This is a sample bio for John Doe. He enjoys coding and hiking.</span></div>
+        </div>
+    </div>
+
+    <script>
+        // Basic script to demonstrate dynamic content (though not required by the task)
+        // In a real application, you would fetch user data based on the userId query parameter
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const userId = params.get('userId');
+            if (userId) {
+                // Placeholder: In a real app, fetch data for userId
+                // For this example, we'll just update the name if a userId is present
+                const profileNameSpan = document.getElementById('profileName');
+                if (userId === '1') {
+                    profileNameSpan.textContent = 'John Doe (Sample)';
+                     // You could set other fields here too
+                } else if (userId === '2') {
+                    profileNameSpan.textContent = 'Jane Smith (Sample)';
+                    document.getElementById('profileEmail').textContent = 'jane.smith@example.com';
+                    document.getElementById('profileAge').textContent = '28';
+                    document.getElementById('profileGender').textContent = 'Female';
+                    document.getElementById('profileBio').textContent = 'Jane is a designer and loves cats.';
+                } else if (userId === '3') {
+                     profileNameSpan.textContent = 'Alex Johnson (Sample)';
+                    document.getElementById('profileEmail').textContent = 'alex.j@example.com';
+                    document.getElementById('profileAge').textContent = '35';
+                    document.getElementById('profileGender').textContent = 'Other';
+                    document.getElementById('profileBio').textContent = 'Alex is a writer and enjoys traveling.';
+                } else {
+                    profileNameSpan.textContent = "User Not Found";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
