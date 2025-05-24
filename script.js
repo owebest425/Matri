@@ -50,6 +50,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     errorMessages.push("Please enter a valid age.");
                 }
             }
+
+            // --- Occupation Validation (Required) ---
+            const occupationInput = document.getElementById('occupation');
+            if (!occupationInput.value.trim()) {
+                isValid = false;
+                errorMessages.push("Occupation is required.");
+            }
+
+            // --- Hobbies, Interests, Education, AboutMe are optional for now ---
+            // No specific validation for these fields in this step.
             
             // --- Displaying Error Messages ---
             if (!isValid) {

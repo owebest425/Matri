@@ -23,7 +23,15 @@
             <div><strong>Email:</strong> <span id="profileEmail">john.doe@example.com</span></div>
             <div><strong>Age:</strong> <span id="profileAge">30</span></div>
             <div><strong>Gender:</strong> <span id="profileGender">Male</span></div>
-            <div><strong>Bio:</strong> <span id="profileBio">This is a sample bio for John Doe. He enjoys coding and hiking.</span></div>
+            <div><strong>Occupation:</strong> <span id="profileOccupation">Software Engineer</span></div>
+            <div><strong>Education:</strong> <span id="profileEducation">M.S. in Computer Science</span></div>
+            <div><strong>Hobbies:</strong> <span id="profileHobbies">Reading, Hiking, Cooking</span></div>
+            <div><strong>Interests:</strong> <span id="profileInterests">Technology, Photography, Travel</span></div>
+            <div class="profile-section">
+                <strong>About Me:</strong>
+                <p id="profileAboutMe" style="margin-top: 5px;">Friendly and outgoing person looking for a meaningful connection. I enjoy exploring new technologies and spending weekends outdoors. Always up for a good book or an interesting documentary.</p>
+            </div>
+            <div><strong>Bio (Original):</strong> <span id="profileBio">This is a sample bio for John Doe. He enjoys coding and hiking.</span></div>
         </div>
     </div>
 
@@ -33,29 +41,61 @@
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const userId = params.get('userId');
-            if (userId) {
-                // Placeholder: In a real app, fetch data for userId
-                // For this example, we'll just update the name if a userId is present
-                const profileNameSpan = document.getElementById('profileName');
-                if (userId === '1') {
-                    profileNameSpan.textContent = 'John Doe (Sample)';
-                     // You could set other fields here too
-                } else if (userId === '2') {
-                    profileNameSpan.textContent = 'Jane Smith (Sample)';
-                    document.getElementById('profileEmail').textContent = 'jane.smith@example.com';
-                    document.getElementById('profileAge').textContent = '28';
-                    document.getElementById('profileGender').textContent = 'Female';
-                    document.getElementById('profileBio').textContent = 'Jane is a designer and loves cats.';
-                } else if (userId === '3') {
-                     profileNameSpan.textContent = 'Alex Johnson (Sample)';
-                    document.getElementById('profileEmail').textContent = 'alex.j@example.com';
-                    document.getElementById('profileAge').textContent = '35';
-                    document.getElementById('profileGender').textContent = 'Other';
-                    document.getElementById('profileBio').textContent = 'Alex is a writer and enjoys traveling.';
-                } else {
-                    profileNameSpan.textContent = "User Not Found";
-                }
+
+            // Default sample data (User 1 - John Doe)
+            let userData = {
+                name: "John Doe (Sample)",
+                email: "john.doe@example.com",
+                age: "30",
+                gender: "Male",
+                occupation: "Software Engineer",
+                education: "M.S. in Computer Science",
+                hobbies: "Reading, Hiking, Cooking",
+                interests: "Technology, Photography, Travel",
+                aboutMe: "Friendly and outgoing person looking for a meaningful connection. I enjoy exploring new technologies and spending weekends outdoors. Always up for a good book or an interesting documentary.",
+                bio: "This is a sample bio for John Doe. He enjoys coding and hiking."
+            };
+
+            if (userId === '2') {
+                userData = {
+                    name: "Jane Smith (Sample)",
+                    email: "jane.smith@example.com",
+                    age: "28",
+                    gender: "Female",
+                    occupation: "Graphic Designer",
+                    education: "B.A. in Design",
+                    hobbies: "Painting, Yoga, Baking",
+                    interests: "Art, Music, Nature",
+                    aboutMe: "Creative individual with a passion for aesthetics and mindfulness. I love to bake in my free time and explore art galleries.",
+                    bio: "Jane is a designer and loves cats."
+                };
+            } else if (userId === '3') {
+                userData = {
+                    name: "Alex Johnson (Sample)",
+                    email: "alex.j@example.com",
+                    age: "35",
+                    gender: "Other",
+                    occupation: "Writer & Editor",
+                    education: "M.A. in Journalism",
+                    hobbies: "Creative Writing, Chess, Cycling",
+                    interests: "Literature, Current Affairs, Film",
+                    aboutMe: "Inquisitive and thoughtful, I thrive on learning new things and engaging in deep conversations. Currently working on my first novel.",
+                    bio: "Alex is a writer and enjoys traveling."
+                };
+            } else if (userId && userId !== '1') {
+                 userData = { name: "User Not Found", email: "", age: "", gender: "", occupation: "", education: "", hobbies: "", interests: "", aboutMe: "", bio: "" };
             }
+
+            document.getElementById('profileName').textContent = userData.name;
+            document.getElementById('profileEmail').textContent = userData.email;
+            document.getElementById('profileAge').textContent = userData.age;
+            document.getElementById('profileGender').textContent = userData.gender;
+            document.getElementById('profileOccupation').textContent = userData.occupation;
+            document.getElementById('profileEducation').textContent = userData.education;
+            document.getElementById('profileHobbies').textContent = userData.hobbies;
+            document.getElementById('profileInterests').textContent = userData.interests;
+            document.getElementById('profileAboutMe').textContent = userData.aboutMe;
+            document.getElementById('profileBio').textContent = userData.bio; // Original bio field
         });
     </script>
 </body>
